@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('lay');
 });
 
 Route::controller(LoginRegisterController::class)->group(function() {
