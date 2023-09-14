@@ -2,69 +2,130 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
-    //show all clients
+
+//register client
+    public function register(Request $request)
+    {
+    $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:clients|max:255',
+        'client_phone_no' => 'required|unique:clients|max:255',
+        'password' => 'required|min:8|max:255|confirmed',
+    ]);
+
+    $client = Client::where('email', $validatedData['email'])->orWhere('client_phone_no', $validatedData['client_phone_no'])->first();
+    if ($client) {
+        return redirect('/login')->with('error', 'You are already registered, please login');
+    }
+
+    $client = new Client($validatedData);
+    $client->name = $validatedData['name'];
+    $client->password = $validatedData['password'];
+    $client->client_phone_no = $validatedData['client_phone_no'];
+    $client->email = $validatedData['email'];
+    $client->save();
+
+    return redirect('/login')->with('success', 'You are registered successfully, please login');
+}
+
+//login client
+    public function login(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:8|max:255',
+        ]);
+        
+        $client = Client::where('email', $validatedData['email'])->first();
+        if(!$client){
+            return redirect('/login')->with('error', 'You are not registered, please register');
+        }
+
+        if($client->email != $validatedData['email']){
+            return redirect('/login')->with('error', 'Wrong email, please try again');
+                if($client->password != $validatedData['password']){
+                    return redirect('/login')->with('error', 'Wrong password, please try again');
+                }
+        }
+
+        return redirect('/profile/'.$client->id);
+    }
+
+// logout client
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
+
+//show all clients
     public function index()
     {
         $clients = Client::all();
         return view('clients.index', compact('clients'));
     }
-    //show a single client
-    public function show($id)
+
+//show a client by it's id
+    public function show_profile($id)
     {
+        if(!Auth::check()){
+            return redirect('/login');
+        }
         $client = Client::findOrFail($id);
         return view('clients.show', compact('client'));
     }
-    
-    public function store(Request $request)
-    {
-        //validate client data
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|unique:clients|max:255',
-            'client_phone_no' => 'required|unique:clients|max:255',
-            'password' => 'required|max:255',
-        ]);
 
-        //create a new client instance with the validate data
-        $client = new Client($validatedData);
-
-        //redirect to login page
-        return redirect('/login');
-    }
-
-    //show form to edit an existing client
-    public function edit($id)
+//show form to edit an existing client
+    public function edit_profile($id)
     {
         $client = Client::findOrFail($id);
         return view('clients.edit', compact('client'));
     }
 
-    //update the specified client in the database
-    public function update(Request $request, $id)
+//update client data in the database by it's id
+    public function update_profile(Request $request, $id)
     {
-        //find the client by its id
         $client = Client::findOrFail($id);
 
-        //validate client data
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:clients|max:255',
             'client_phone_no' => 'required|unique:clients|max:255',
             'password' => 'required|max:255',
         ]);
-
-        //update the client
         Client::whereId($id)->update($validatedData);
 
-        //redirect to the client's profile with a success message
-        return redirect('/clients/'.$id)->with('success', 'Profile updated successfully');
+        return redirect('/profile/'.$id)->with('success', 'Profile updated successfully');
     }
 
-    //delete the specified client from the database
+//change password form
+    public function changePassword($id)
+    {
+        $client = Client::findOrFail($id);
+        return view('clients.change-password', compact('client'));
+    }
+
+//update client password
+    public function updatePassword(Request $request, $id)
+    {
+        $client = Client::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'password' => 'required|min:8|max:255|confirmed',
+        ]);
+
+        Client::whereId($id)->update($validatedData);
+
+        return redirect('/profile/'.$id)->with('success', 'Password updated successfully');
+    }
+
+//delete the specified client from the database
     public function destroy($id)
     {
         //find the client by its id
