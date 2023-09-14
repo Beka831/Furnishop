@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -26,9 +26,9 @@ class ClientController extends Controller
 
     $client = new Client($validatedData);
     $client->name = $validatedData['name'];
-    $client->password = $validatedData['password'];
-    $client->client_phone_no = $validatedData['client_phone_no'];
     $client->email = $validatedData['email'];
+    $client->password = $validatedData['password'];//encrypt password
+    $client->client_phone_no = $validatedData['client_phone_no'];
     $client->save();
 
     return redirect('/login')->with('success', 'You are registered successfully, please login');
