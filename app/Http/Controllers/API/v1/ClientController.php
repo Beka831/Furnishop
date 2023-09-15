@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use App\Models\API\v1\Client;
-use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\TokenGuard;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\API\BaseController as BaseController;
 
 class ClientController extends BaseController
 {
@@ -65,6 +66,9 @@ class ClientController extends BaseController
         return $this->sendResponse($success, 'Client logged in successfully.');
     } else {
         $client = Client::where('email', $request->email)->first();
+        if (!Hash::check($request->password, $client->password)) {
+            return $this->sendError('Unauthorised.', ['error' => 'Incorreeeect password.']);
+        }
         
         if (!$client) {
             return $this->sendError('Unauthorised.', ['error' => 'Email not found.']);
