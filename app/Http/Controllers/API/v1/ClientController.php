@@ -46,7 +46,7 @@ class ClientController extends BaseController
      * @return \Illuminate\Http\Response
      */
 
-     
+
     public function login(Request $request): JsonResponse
 {
     $credentials = $request->only('email', 'password');
@@ -74,12 +74,12 @@ class ClientController extends BaseController
      * @return \Illuminate\Http\Response
      */
     
-    public function logout(Request $request, TokenGuard $tokenGuard): JasonResponse
-    {
-        $tokenGuard->logout();
-        return $this->sendResponse([], 'Client logged out successfully.');
-
-    }
+     public function logout(Request $request): JsonResponse
+     {
+         $request->user('client')->token()->revoke();
+ 
+         return response()->json(['message' => 'Client logged out successfully.']);
+     }
 
     
     public function index(): JsonResponse
@@ -107,9 +107,9 @@ class ClientController extends BaseController
     }
 
     
-    public function show($id): JsonResponse
+    public function show($client_id): JsonResponse
     {
-        $client = Client::find($id);
+        $client = Client::find($client_id);
         if (is_null($client)) {
             return $this->sendError('Client not found.');
         }

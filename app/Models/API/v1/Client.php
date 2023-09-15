@@ -13,6 +13,7 @@ use Laravel\Passport\HasApiTokens;
 class Client extends Model 
 {
     use HasFactory, HasApiTokens;
+    protected $primaryKey = 'client_id';
     protected $fillable = [
         'name',
         'email',

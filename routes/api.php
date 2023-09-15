@@ -29,11 +29,24 @@ Route::get('/message', function(){
     ]);
 });
 
+// done(works fine)
 Route::post('clientregister', [ClientController::class, 'register']);
+Route::get('clients', [ClientController::class, 'index']);
+Route::put('clientupdate/{client}', [ClientController::class, 'update']);
+Route::get('client/{client_id}', [ClientController::class, 'show']);
+//
+
+// under development
 Route::post('clientlogin', [ClientController::class, 'login']);
-//test
+Route::post('clientlogout', [ClientController::class, 'logout']);
+//
+
+
+
+//for testing
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
+
 
 Route::middleware('auth:api')->group( function() {
     Route::resource('products', ProductController::class);
