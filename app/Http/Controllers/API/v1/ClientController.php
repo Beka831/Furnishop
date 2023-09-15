@@ -24,6 +24,7 @@ class ClientController extends BaseController
             'client_phone_no' => 'required|unique:clients,client_phone_no|max:25',
             'email' => 'required|email|unique:clients,email|max:255',
             'password' => 'required|min:8|max:255',
+            'c_password' => 'required|same:password',
         ]);
         if($validator->fails()){
             return $this->sendError('Validation Error.', $validator->errors());
@@ -37,6 +38,10 @@ class ClientController extends BaseController
         $success['client_phone_no'] = $client->client_phone_no;
         $success['email'] = $client->email;
         $success['password'] = $client->password;
+        $success['c_password'] = $client->password;
+        if($success['password'] != $success['c_password']){
+            return $this->sendError('Validation Error. must confirm password', $validator->errors());
+        }
         return $this->sendResponse($success, 'Client registered successfully.');
     }
 
