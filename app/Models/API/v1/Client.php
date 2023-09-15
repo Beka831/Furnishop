@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\API\v1;
 
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Review;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Passport\HasApiTokens;
 
-class Client extends Model
+
+class Client extends Model 
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
     protected $fillable = [
         'name',
         'email',
