@@ -38,9 +38,12 @@ class ClientController extends BaseController
         $success['name'] = $client->name;
         $success['client_phone_no'] = $client->client_phone_no;
         $success['email'] = $client->email;
-        $success['password'] = $client->password;
-        $success['c_password'] = $client->password;
-        if($success['password'] != $success['c_password']){
+//come back to this later
+        $pass = $client->password;
+        $c_pass = $client->password;
+        // $success['password'] = $client->password;
+        // $success['c_password'] = $client->password;
+        if($pass != $c_pass){
             return $this->sendError('Validation Error. must confirm password', $validator->errors());
         }
         return $this->sendResponse($success, 'Client registered successfully.');
@@ -98,23 +101,6 @@ class ClientController extends BaseController
     }
 
 
-    public function store(Request $request): JasonResponse
-    {
-        $input = $request->all();
-        $validator = Validator::make($input, [
-            'name' => 'required|max:255',
-            'client_phone_no' => 'required|unique:clients,client_phone_no|max:25',
-            'email' => 'required|email|unique:clients,email|max:255',
-            'password' => 'required|min:8|max:255',
-        ]);
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());
-        }
-        $input['password'] = bcrypt($input['password']);
-        $client = Client::create($input);
-        return $this->sendResponse($client->toArray(), 'Client created successfully.');
-    }
-
     
     public function show($client_id): JsonResponse
     {
@@ -126,7 +112,7 @@ class ClientController extends BaseController
     }
 
 
-    public function update(Request $request, Client $client): JsonResponse
+    public function update(Request $request, $client_id): JsonResponse
     {
         $input = $request->all();
         $validator = Validator::make($input, [
@@ -137,6 +123,10 @@ class ClientController extends BaseController
         ]);
         if($validator->fails()){
             return $this->sendError('Validation Error.', $validator->errors());
+        }
+        $client = Client::find($client_id);
+        if (is_null($client)) {
+            return $this->sendError('Client not found.');
         }
         $client->name = $input['name'];
         $client->client_phone_no = $input['client_phone_no'];

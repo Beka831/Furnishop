@@ -115,7 +115,7 @@ class SellerController extends BaseController
         return $this->sendResponse($seller->toArray(), 'Seller retrieved successfully.');
     }
     //update
-    public function update(Request $request, Seller $seller): JsonResponse
+    public function update(Request $request, $seller_id): JsonResponse
     {
         $input = $request->all();
         $validator = Validator::make($input, [
@@ -129,11 +129,14 @@ class SellerController extends BaseController
         if($validator->fails()){
             return $this->sendError('Validation Error.', $validator->errors());
         }
+        $seller = Seller::find($seller_id);
+        if (is_null($seller)) {
+            return $this->sendError('Seller not found.');
+        }
         $seller->company_name = $input['company_name'];
         $seller->seller_phone_no = $input['seller_phone_no'];
         $seller->email = $input['email'];
         $seller->password = $input['password'];
-        $seller->c_password = $input['c_password'];
         $seller->tin_no = $input['tin_no'];
         $seller->save();
         return $this->sendResponse($seller->toArray(), 'Seller updated successfully.');
