@@ -9,12 +9,12 @@
 
 Team Members
 
-# Esrael Berhanu
-# Teamir
-# Beka Tilahun
-# Sintayehu Sisay
-# Kidus Tesfaye
-# Daniel
+#Esrael Berhanu
+#Teamir
+#Beka Tilahun
+#Sintayehu Sisay
+#Kidus Tesfaye
+#Daniel
 
 
 
