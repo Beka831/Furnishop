@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 */
 
 Route::get('/', function () {
-    return view('lay');
+    return view('welcome');
 });
 
 Route::controller(LoginRegisterController::class)->group(function() {
@@ -25,3 +25,12 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+    
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

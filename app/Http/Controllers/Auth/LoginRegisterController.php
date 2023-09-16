@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
 {
+
+    // use AuthenticateUsers;
+    
       /**
      * Instantiate a new LoginRegisterController instance.
      */
