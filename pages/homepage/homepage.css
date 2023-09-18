@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap');
 *{
     margin: 0;
@@ -10,6 +9,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body {
+  overflow-x: hidden;
     
 }
 @media (max-width: 768px) {
@@ -115,16 +115,17 @@ header{
 }
 
 .home {
-    width: 100%;
-    min-height: 100vh;
-    background-image: url(1st.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    background-attachment: scroll;
-    display: flex;
-    align-items: center;
-  }
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../../assets/images/homepage/1st.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  
+}
   
   .home-text h1 {
     font-size: 3.8rem;
@@ -232,7 +233,7 @@ header{
     transform: translateX(-50%);
     color: white;
     text-align: center;
-  }
+}
   
   .ttbar {
     position: absolute;
