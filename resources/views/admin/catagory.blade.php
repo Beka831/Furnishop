@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FurniShop</title>
     
     <style  type="text/css">
         .h1_font{
@@ -17,6 +17,14 @@
         .center{
             color: green;
         }
+        .catagories{
+            margin: auto;
+            text-align: center;
+            width: 50%;
+            margin-top: 25px;
+            border: 3px solid blue;
+        }
+        
     </style>
 </head>
 <body>
@@ -41,8 +49,27 @@
                      <label for="name" >Category Name:</label>
                     <input type="text" name="catagories" id="name" required>
 
-                 <button type="submit">Add Category</button>
+                 <button type="submit" class="btn btn-success">Add Category</button>
             </form>
+            <div>
+                <table class="catagories">
+                    <tr>
+                        <td>Id_No</td>
+                        <td>Product Name</td>
+                        <td>Created at</td>
+                        <td>Action</td>
+                    </tr>
+                    @foreach($data as $data)
+                    <tr>
+                        <td>{{$data->id}}</td>
+                        <td>{{$data->catagories_title}}</td>
+                        <td>{{$data->created_at}}</td>
+                        <td><a class="btn btn-danger" href="{{url('/delete_catagory',$data->id)}}" 
+                        onclick=" return confirm('Are You Sure to Delete This Catagory')">Delete</a></td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
 
         </div>
 </div>
