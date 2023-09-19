@@ -24,6 +24,9 @@
             margin-top: 25px;
             border: 3px solid blue;
         }
+        th{
+        background-color:blue;
+    }
         
     </style>
 </head>
@@ -54,10 +57,10 @@
             <div>
                 <table class="catagories">
                     <tr>
-                        <td>Id_No</td>
-                        <td>Product Name</td>
-                        <td>Created at</td>
-                        <td>Action</td>
+                        <th>Id_No</th>
+                        <th>Product Name</th>
+                        <th>Created at</th>
+                        <th>Action</th>
                     </tr>
                     @foreach($data as $data)
                     <tr>

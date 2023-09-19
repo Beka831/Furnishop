@@ -4,7 +4,7 @@
   <style>
     /* CSS styling for the form */
     .form-container {
-      width: 350px;
+      width: 480px;
       margin: 0 auto;
       padding: 20px;
       background-color: green;
@@ -114,7 +114,7 @@
        
     <!-- container-scroller -->
     <!-- plugins:js -->
- 
+    @include('admin.js')
     <!-- End custom js for this page -->
   
 
