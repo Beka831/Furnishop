@@ -51,10 +51,11 @@ class AdminController extends Controller
         $products->pro_price = $request->price;
        
         $products->pro_catagory = $request->pro_catagory;
-
+        $pro_name = $request->pro_catagory;
+       
         $pro_image=$request->pro_image;
 
-        $imagename=time().'.'.$pro_image->getClientOriginalExtension();
+        $imagename=$pro_name.time().'.'.$pro_image->getClientOriginalExtension();
 
         $request->pro_image->move('products',$imagename);
 
