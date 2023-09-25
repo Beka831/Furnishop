@@ -3,10 +3,11 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\Seller;
+use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Laravel\Jetstream\Jetstream;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -26,12 +27,32 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'phone' => $input['phone'],
             'address' => $input['address'],
+            'phone' => $input['phone'],
             'password' => Hash::make($input['password']),
         ]);
+
+        // $seller = Seller::create([
+            
+        //     'tin_no' => $input['tin_no'],
+        //     'company_name' => $input['company_name'],
+        //     'company_address' => $input['company_address'],
+        // ]);
+        $seller = new Seller();
+        $seller->tin_no = $input['tin_no'];
+        $seller->company_name = $input['company_name'];
+        $seller->company_address = $input['company_address'];
+        $seller->user_id = $user->id;
+
+        $seller->save();
+    
+        $user->seller()->save($seller);
+    
+        return $user;
+
+
     }
 }

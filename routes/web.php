@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SellerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +41,5 @@ Route::middleware([
  route::post('/add_product',[AdminController::class,'add_product']);
 
  route::get('/show_product',[AdminController::class,'show_product']);
+ 
+ route::post('/add_seller',[SellerController::class,'add_seller']);
