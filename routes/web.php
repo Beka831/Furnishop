@@ -31,6 +31,10 @@ Route::middleware([
 
  route::get('/view_catagory',[AdminController::class,'view_catagory']);
 
+ route::get('/page_catagory',[AdminController::class,'page_catagory']);
+
+ route::get('/page_product',[AdminController::class,'page_product']);
+
  route::post('/add_catagory',[AdminController::class,'add_catagory']);
 
  route::get('/delete_catagory/{id}',[AdminController::class,'delete_catagory']);
@@ -40,3 +44,7 @@ Route::middleware([
  route::post('/add_product',[AdminController::class,'add_product']);
 
  route::get('/show_product',[AdminController::class,'show_product']);
+
+ route::post('/test',[AdminController::class,'test']);
+
+ route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
