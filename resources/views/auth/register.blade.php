@@ -28,28 +28,6 @@
                 <x-label for="address" value="{{ __('address') }}" />
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="username" />
             </div>
-            
-            
-            
-
-            <div>
-                <x-label for="company_name" value="{{ __('company_name') }}" />
-                <x-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')" required autofocus autocomplete="name" />
-            </div>
-
-
-            <div class="mt-4">
-                <x-label for="company_address" value="{{ __('company_address') }}" />
-                <x-input id="company_address" class="block mt-1 w-full" type="text" name="company_address" :value="old('company_address')" required autocomplete="username" />
-            </div>
-
-
-            <div class="mt-4">
-                <x-label for="tin_no" value="{{ __('tin_no') }}" />
-                <x-input id="tin_no" class="block mt-1 w-full" type="text" name="tin_no" :value="old('tin_no')" required autocomplete="username" />
-            </div>
-            
-
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />

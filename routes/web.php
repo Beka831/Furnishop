@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SellerController;
@@ -18,6 +19,17 @@ use App\Http\Controllers\SellerController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register_seller', function () {
+    return view('seller.sellerRegister');
+})->name('registerS');
+// Route::post('/register_seller', [CreateNewUser::class, 'createSeller'])->name('registerSeller');
+Route::post('/register_seller', function () {
+    $createNewUser = new CreateNewUser();
+    return $createNewUser->createSeller(Request::capture());
+})->name('registerSeller');
+Route::get('/seller/home', function () {
+    return view('seller.home');
+})->name('seller.home');
 
 Route::middleware([
     'auth:sanctum',

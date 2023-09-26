@@ -6,31 +6,53 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('/add_seller') }}">
+        <form method="POST" action="{{ route('registerSeller') }}">
             @csrf
 
             <div>
-                <x-label for="name" value="{{ __('company_name') }}" />
+                <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-
+     
             <div class="mt-4">
-                <x-label for="email" value="{{ __('company_email') }}" />
+                <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
-
+            
             <div class="mt-4">
-                <x-label for="phone" value="{{ __('company_phone') }}" />
+                <x-label for="phone" value="{{ __('phone') }}" />
                 <x-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required autocomplete="username" />
             </div>
-
+            
             <div class="mt-4">
-                <x-label for="address" value="{{ __('company_address') }}" />
-                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('email')" required autocomplete="username" />
+                <x-label for="address" value="{{ __('address') }}" />
+                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="username" />
+            </div>
+            
+            
+            
+
+            <div>
+                <x-label for="company_name" value="{{ __('company_name') }}" />
+                <x-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')" required autofocus autocomplete="name" />
             </div>
 
+
             <div class="mt-4">
-                <x-label for="password" value="{{ __('password') }}" />
+                <x-label for="company_address" value="{{ __('company_address') }}" />
+                <x-input id="company_address" class="block mt-1 w-full" type="text" name="company_address" :value="old('company_address')" required autocomplete="username" />
+            </div>
+
+
+            <div class="mt-4">
+                <x-label for="tin_no" value="{{ __('tin_no') }}" />
+                <x-input id="tin_no" class="block mt-1 w-full" type="text" name="tin_no" :value="old('tin_no')" required autocomplete="username" />
+            </div>
+            
+
+
+            <div class="mt-4">
+                <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
