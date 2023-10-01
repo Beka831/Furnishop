@@ -172,9 +172,7 @@
     <script src="assets/js/products.js"></script>
     <script src="assets/js/customers.js"></script>
     <script src="assets/js/tarsale.js"></script>
-    <x-app-layout>
-    
-    </x-app-layout>
+
 </body>
 
 </html>

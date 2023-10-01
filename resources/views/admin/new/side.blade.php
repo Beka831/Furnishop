@@ -1,3 +1,10 @@
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/0998aad7b4.js" crossorigin="anonymous"></script>
+</head>
+
+
+
 <div class="sidebar">
             <ul class="sidebar--items">
                 <li>
@@ -39,12 +46,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><i class="ri-logout-box-r-line"></i></span>
-                        <div class="sidebar--item">Logout</div>
-                    </a>
+             <div class="li text-center"> 
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+                    <button type="submit" class="btn btn-danger">
+                    <i class="fa-solid fa-right-from-bracket">Logout</i>
+                    </button>
+                </form>
                 </li>
-                
+                </div>
             </ul>
             
         </div>

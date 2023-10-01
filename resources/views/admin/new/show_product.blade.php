@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="admin2/product.css">
     <script src="js.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <title>product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>product Description</title>
 </head>
 <body class="body">
     @include('admin/new.nav')
@@ -18,6 +19,11 @@
             <section class="table_header">
                 <h1>Our Products</h1>
             </section>
+            @if(session()->has('message'))
+                <div class="text-center text-danger">
+                    {{session()->get('message')}}
+                </div>
+            @endif
             <section class="table_body">
                 <table>
                     <thead>
@@ -45,7 +51,7 @@
                         </td>
                         <td>{{$data->created_at}}</td>
                         <td><a class="edit">Edit</a><a class="delete" href="{{url('/delete_product',$data->id)}}" 
-                        onclick=" return confirm('Are You Sure to Delete This Catagory')">Delete</a></td>
+                        onclick=" return confirm('Are You Sure to Delete This Product')">Delete</a></td>
                         
                       @endforeach
                       
