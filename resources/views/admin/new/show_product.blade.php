@@ -39,19 +39,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($data as $data)
+                      @foreach($product as $product)
                       <tr>
-                        <td>{{$data->id}}</td>
-                        <td>{{$data->pro_name}}</td>
-                        <td>{{$data->pro_catagory}}</td>
-                        <td>{{$data->pro_desc}}</td>
-                        <td>{{$data->pro_price}}</td>
+                        <td>{{$product->id}}</td>
+                        <td>{{$product->pro_name}}</td>
+                        <td>{{$product->pro_catagory}}</td>
+                        <td>{{$product->pro_desc}}</td>
+                        <td>{{$product->pro_price}}</td>
                         <td>
-                            <img src="/products/{{$data->pro_image}}" alt="produc image" class="pro-image">
+                            <img src="/products/{{$product->pro_image}}" alt="produc image" class="pro-image">
                         </td>
-                        <td>{{$data->created_at}}</td>
-                        <td><a class="edit">Edit</a><a class="delete" href="{{url('/delete_product',$data->id)}}" 
-                        onclick=" return confirm('Are You Sure to Delete This Product')">Delete</a></td>
+                        <td>{{$product->created_at}}</td>
+                        <td><a class="edit" href="{{url ('/edit_product',$product->id)}}">Edit</a>
+                        <a class="delete" href="{{url('/delete_product',$product->id)}}" 
+                        onclick=" return confirm('Are You Sure to Delete This Product')">Delete</a>
+                        </td>
                         
                       @endforeach
                       
