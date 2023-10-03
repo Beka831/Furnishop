@@ -112,7 +112,7 @@ class AdminController extends Controller
 
         $pro_image=$request->pro_image;
 
-        $pro_name = $request->pro_catagory;
+        $pro_name = $request->pcatagory;
         
         $imagename=$pro_name.time().'.'.$pro_image->getClientOriginalExtension();
 
@@ -123,7 +123,6 @@ class AdminController extends Controller
         $products->save();
 
         return redirect()->back()->with('message','Update Product Successfully');
-
 
    }
 }
