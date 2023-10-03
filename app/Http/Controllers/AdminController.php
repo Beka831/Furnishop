@@ -63,9 +63,10 @@ class AdminController extends Controller
         $products->pro_price = $request->price;
        
         $products->pro_catagory = $request->pro_catagory;
-        $pro_name = $request->pro_catagory;
        
         $pro_image=$request->pro_image;
+
+        $pro_name = $request->pro_catagory;
 
         $imagename=$pro_name.time().'.'.$pro_image->getClientOriginalExtension();
 
@@ -101,26 +102,27 @@ class AdminController extends Controller
    }
    public function update_product(Request $request,$id){
 
-        $product = products::find($id);
+        $products = products::find($id);
 
-        $product->pro_name = $request->pname;
-        $product->pro_catagory = $request->pcatagory;
-        $product->pro_desc = $request->pdesc;
-        $product->pro_quantity = $request->pquantity;
-        $product->pro_price = $request->pprice;
+        $products->pro_name = $request->pname;
+        $products->pro_catagory = $request->pcatagory;
+        $products->pro_desc = $request->pdesc;
+        $products->pro_quantity = $request->pquantity;
+        $products->pro_price = $request->pprice;
 
-        $image = $request->pimage;
-        $pro_name = $request->pro_catagory; 
-        $imagename=$pro_name.time().'.'.$image->getClientOriginalExtension();
+        $pro_image=$request->pro_image;
+
+        $pro_name = $request->pro_catagory;
         
-        $request->image->move('products',$imagename);
+        $imagename=$pro_name.time().'.'.$pro_image->getClientOriginalExtension();
 
-        $product->pro_image = $imagename;
+        $request->pro_image->move('products',$imagename);
 
-        $product->save();
+        $products->pro_image=$imagename;
 
-        return redirect()->back();
+        $products->save();
 
+        return redirect()->back()->with('message','Update Product Successfully');
 
 
    }

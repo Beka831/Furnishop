@@ -14,12 +14,20 @@
          
           
   <div class="title-text">
-    <div class="title login">Add Product</div>
+    <div class="title login">Edit Product</div>
+  </div>
+  <div class="field">
+  @if(session()->has('message'))
+                <div class="text-success text-center">
+                    {{session()->get('message')}}
+                </div>
+         @endif
   </div>
   <div class="form-container">
     <div class="form-inner">
       <form action="{{ url('/update_product',$product->id)}}" method="POST" enctype="multipart/form-data" class="signup">
         @csrf
+        
         <div class="field">
             <label for="Product-Name">Product Name</label>
           <input type="text" placeholder="product name" name="pname" value="{{$product->pro_name}}" required>
@@ -55,16 +63,16 @@
           
           <div class="field">
             <label for="product-image">Old Image</label>
-              <img width="100" height="100" src="/products/{{$product->pro_image}}" alt="product-image">
+              <img width="70" height="70" src="/products/{{$product->pro_image}}" alt="product-image">
           </div> 
-
-        <div class="field">
-            <label for="product-"></label>
-            <input type="file" placeholder="newimage" name="pimage"accept="image/*" required>
+          <div class="field">
+          <label for="product-image">New Image</label>
+            <input type="file" name="pro_image" accept="image/*" required>
           </div>
+        
         <div class="field btn">
           <div class="btn-layer"></div>
-          <input type="submit" value="Add">
+          <input type="submit" value="Update">
         </div>
         
       </form>
