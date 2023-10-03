@@ -21,12 +21,6 @@ class AdminController extends Controller
 
         return view('admin/new.add_catagory',compact('data'));
     }
-    public function page_product(){
-
-        $pro_catagory = catagories::all();
-
-        return view('admin/new.add_product',compact('pro_catagory'));
-    }
     public function add_catagory(Request $request){
         
         $data = new catagories;
@@ -46,7 +40,29 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Deleted successfully');
     }
-    
+    public function edit_catagory($id){
+
+        $data = catagories::find($id);
+
+        return view('admin/new.edit_catagory', compact('data'));
+    }
+    public function update_catagory(Request $request,$id){
+
+        $data = catagories::find($id);
+
+        $data->catagories_title = $request->pcatagory;
+
+        $data->save();
+
+        return redirect()->back()->with('message','Update catagory Successfully');
+
+   }
+   public function page_product(){
+
+    $pro_catagory = catagories::all();
+
+    return view('admin/new.add_product',compact('pro_catagory'));
+    }
     public function view_product(){
 
         $pro_catagory = catagories::all();

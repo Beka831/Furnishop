@@ -50,4 +50,8 @@ Route::middleware([
 
  route::get('/edit_product/{id}',[AdminController::class,'edit_product']);
 
+ route::get('/edit_catagory/{id}',[AdminController::class,'edit_catagory']);
+
  route::post('/update_product/{id}',[AdminController::class,'update_product']);
+
+ route::post('/update_catagory/{id}',[AdminController::class,'update_catagory']);

@@ -34,30 +34,26 @@
                           <th >id</th>
                           <th >Catagory Name</th>
                           <th>Created at</th>
-                          <th >Action</th>
+                          <th>Updated at</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                       @foreach($data as $data)
                         <tr>
-                          <th scope="row">{{$data->id}}</th>
-                          <th>{{$data->catagories_title}}</th>
-                          <th>{{$data->created_at}}</th>
-                          <th><a class="delete" href="{{url('/delete_catagory',$data->id)}}" 
-                        onclick=" return confirm('Are You Sure to Delete This Catagory')">Delete</a></th> 
+                          <td scope="row">{{$data->id}}</td>
+                          <td>{{$data->catagories_title}}</td>
+                          <td>{{$data->created_at}}</td>
+                          <td>{{$data->updated_at}}</td>
+                          <td><a class="edit" href="{{url('/edit_catagory',$data->id)}}">Edit</a>
+                          <td><a class="delete" href="{{url('/delete_catagory',$data->id)}}" 
+                        onclick=" return confirm('Are You Sure to Delete This Catagory')">Delete</a></td> 
                         </tr>
                     @endforeach
                       
                       </tbody>
                     </table>
-                    <form method="POST" action="{{ route('logout') }}" x-data>
-                                @csrf
-
-                                <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
-                                    
-                                </x-dropdown-link>
-                            </form>
+                
                
             </section>
         </main> 
