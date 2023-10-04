@@ -27,7 +27,7 @@ Route::middleware([
     })->name('dashboard');
 });
  route::get('/redirect',[HomeController::class,'redirect']);
-
+//admin side
  route::get('/view_catagory',[AdminController::class,'view_catagory']);
 
  route::get('/page_catagory',[AdminController::class,'page_catagory']);
@@ -55,3 +55,7 @@ Route::middleware([
  route::post('/update_product/{id}',[AdminController::class,'update_product']);
 
  route::post('/update_catagory/{id}',[AdminController::class,'update_catagory']);
+
+ //user side
+
+ route::get('/conecterone',[HomeController::class,'conecterone']);

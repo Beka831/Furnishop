@@ -113,7 +113,7 @@
         <li class="dropdown">
           <a href="#products" class="dropbtn">Products <i class='bx bx-caret-down'></i></a>
           <div class="dropdown-content">
-            <a href="#">All</a>
+            <a href="{{url('conecterone')}}">All</a>
             <a href="#">Sofa</a>
             <a href="#">Lamp</a>
             <a href="#">Table</a>
@@ -129,19 +129,20 @@
        </div>
     </header>
   <section class="home" id="home">
-      @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/redirect') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth    
-                </div>
-            @endif
+  @if (Route::has('login'))
+  @auth
+  <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+                    <button type="submit" class="btn btn-danger">
+                    <i class="fa-solid fa-right-from-bracket">Logout</i>
+                    </button>
+                </form>
+        @else
+        <li><a href="{{ route('login') }}">login</a></li>
+        <li><a href="{{ route('register') }}">register</a></li> 
+        
+    @endauth
+   @endif       
       <div class="home-text">
           <h1><span>Creative Furniture for your<br>House</h1></span>
           <p>Welcome to Furnishop, where quality meets comfort! We are your trusted destination<br> for all your furniture needs. With years of experience in the industry, we pride ourselves<br> on offering a wide selection of stylish and durable furniture pieces<br> to enhance your home or office space.</p>
@@ -168,7 +169,8 @@
     </div>
     <div class="ttttbar"></div>
   </div>
-  <div class="pt"><p>Popular-Tags</p></div>
+  
+  <div class="pt"><p>our-catagory</p></div>
 
   <div class="cards1">
     <a href="#"><img src="home/beki/sofa.png" alt="Description of the image" width="#" height="#" class="card1" id="image-id"></a>
@@ -192,6 +194,7 @@
   <div class="cards6">
     <a href="#"><img src="home/beki/t&ch.png" alt="Description of the image" width="#" height="#" class="card6" id="image-id"></a>
   </div>
+  
 
   <div class="image">
     <img src="home/beki/imagebbb.jpg" alt="Description of the image" width="#" height="#" class="image" id="image-id">
