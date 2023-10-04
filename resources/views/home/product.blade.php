@@ -88,7 +88,7 @@
           <a href="#">
             <img src="products/{{$product->pro_image}}" alt="Card 1" class="sofa">
             <div class="card-content">
-              {{$product->pro_name}}
+              
             </div>
 
           </a>

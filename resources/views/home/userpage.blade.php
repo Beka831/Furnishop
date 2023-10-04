@@ -113,7 +113,7 @@
         <li class="dropdown">
           <a href="#products" class="dropbtn">Products <i class='bx bx-caret-down'></i></a>
           <div class="dropdown-content">
-            <a href="{{url('conecterone')}}">All</a>
+            <a href="{{url('index')}}">All</a>
             <a href="#">Sofa</a>
             <a href="#">Lamp</a>
             <a href="#">Table</a>

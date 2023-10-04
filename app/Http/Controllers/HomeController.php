@@ -22,8 +22,9 @@ class HomeController extends Controller
        
     }
     public function conecterone(){
-
-        return view('home.product');
+        $latest = products::all();
+        
+        return view('home.product',compact('latest'));
 
     }
     public function index(){
