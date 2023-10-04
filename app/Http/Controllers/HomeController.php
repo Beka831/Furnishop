@@ -21,21 +21,25 @@ class HomeController extends Controller
         }
        
     }
-    public function conecterone(){
-        $latest = products::all();
-        
-        return view('home.product',compact('latest'));
-
-    }
+   
     public function index(){
+
+        $product = products::all();
+   
+        return view('home.userpage');
+    }
+    public function link(){
 
         $product = products::all();
         $latest = products::all()->take(-5);
         $sofa = products::where('pro_catagory','sofa')->get();
         $lamp = products::where('pro_catagory','lamp')->get();
-         return view('home.product',compact('product','sofa','lamp','latest'));
+        $table = products::where('pro_catagory','table')->get();
+        $bed = products::where('pro_catagory','bed')->get();
+        $chair = products::where('pro_catagory','chair')->get();
+         
+        return view('home.product',compact('product','sofa','lamp','latest','table','bed','chair'));
     }
-
 
     
     

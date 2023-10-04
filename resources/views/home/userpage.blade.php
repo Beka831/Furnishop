@@ -109,17 +109,10 @@
     <a href="#" class="logo">Furni<span>shop</span></a>
       <div class="navbar-wrapper">
         <ul class="navbar">
-        <li><a href="#home">Home</a></li>
+        <li><a href="{{url('index')}}">Home</a></li>
         <li class="dropdown">
-          <a href="#products" class="dropbtn">Products <i class='bx bx-caret-down'></i></a>
-          <div class="dropdown-content">
-            <a href="{{url('index')}}">All</a>
-            <a href="#">Sofa</a>
-            <a href="#">Lamp</a>
-            <a href="#">Table</a>
-            <a href="#">Bed</a>
-            <a href="#">Chair</a>
-          </div>
+          <a href="{{url('link')}}" class="dropbtn">Products</a>
+          
         </li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
@@ -142,7 +135,8 @@
         <li><a href="{{ route('register') }}">register</a></li> 
         
     @endauth
-   @endif       
+   @endif 
+       
       <div class="home-text">
           <h1><span>Creative Furniture for your<br>House</h1></span>
           <p>Welcome to Furnishop, where quality meets comfort! We are your trusted destination<br> for all your furniture needs. With years of experience in the industry, we pride ourselves<br> on offering a wide selection of stylish and durable furniture pieces<br> to enhance your home or office space.</p>

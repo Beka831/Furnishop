@@ -58,5 +58,6 @@ Route::middleware([
 
  //user side
 
- route::get('/conecterone',[HomeController::class,'conecterone']);
+ route::get('/link',[HomeController::class,'link']);
+
  route::get('/index',[HomeController::class,'index']);
