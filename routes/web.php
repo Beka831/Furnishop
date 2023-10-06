@@ -61,3 +61,14 @@ Route::middleware([
  route::get('/link',[HomeController::class,'link']);
 
  route::get('/index',[HomeController::class,'index']);
+
+ route::get('/product_detail/{id}',[HomeController::class,'product_detail']);
+
+//add_product to cart
+
+
+route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
+
+route::get('/show_cart',[HomeController::class,'show_cart']);
+
+route::get('/delete_cart/{id}',[HomeController::class,'delete_cart']);

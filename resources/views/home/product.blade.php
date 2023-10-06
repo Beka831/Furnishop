@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    
+    <script src="https://kit.fontawesome.com/0998aad7b4.js" crossorigin="anonymous"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -35,45 +35,24 @@
               
             <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#cart" class="cart"><i class='bx bxs-cart'></i></a></li>
+            <li><a href="{{url('/show_cart')}}" class="cart"><i class='bx bxs-cart'></i></a></li>
             <li><a href="#account" class="account"><i class='bx bx-user'></i></a></li>
           </ul>
         </div>
+
       </header>
-      <div class="container">
+      <div class="container scrollable-container">
         <p class="category-heading">All Categories<br><br></p>
         <hr class="line0">
         <ul class="furniture-list">
+          @foreach($catagory as $catagory)
             <li>
               <a href="#container3sofa">
-                <i class="fas fa-couch"></i>
-                <span>Sofa</span>
+                <span>{{$catagory->catagories_title}}</span>
               </a>
             </li>
-            <li>
-              <a href="#container4lamp">
-                <i class="fas fa-lightbulb"></i>
-                <span>Lamp</span>
-              </a>
-            </li>
-            <li>
-              <a href="#container5table">
-                <i class="fas fa-table"></i>
-                <span>Table</span>
-              </a>
-            </li>
-            <li>
-              <a href="#container6bed">
-                <i class="fas fa-bed"></i>
-                <span>Bed</span>
-              </a>
-            </li>
-            <li>
-              <a href="#container7chair">
-                <i class="fas fa-chair"></i>
-                <span>Chair</span>
-              </a>
-        </ul>
+           @endforeach
+        </ul> 
       </div>
 
       <!-- latest products -->
@@ -81,13 +60,9 @@
       <div class="latest-product">Latest Products</div>
       @foreach($latest as $latest)
         <div class="card">
-          
             <img src="products/{{$latest->pro_image}}" alt="Card 1" class="card3-image">
-              
             <div class="card3-description">
             </div>
-
-          
         </div>
         @endforeach
     </div>
@@ -99,9 +74,9 @@
       </div>
       <section id="container3sofa">
       <!-- sofa -->
-
+    
       <div class="container3sofa">
-        <h2 class="Couch">Sofa</h2>
+        <h2 class="Couch">sofa</h2>
         @foreach($sofa as $sofa)
        
         <div class="card3">
@@ -110,14 +85,15 @@
           <div class="card3-description">
             <h4>{{$sofa->pro_name}}</h4>
             <p>{{$sofa->pro_desc}}</p>
-            <a href=""><i class="fa fa-shopping-cart"></i></a>
-            
+           
+            <a href="{{url('product_detail',$sofa->id)}}"><i class="fa fa-shopping-cart"></i></a>
+          
           </div>
           
         </div>
         
+  
         @endforeach
-
         <section class="section" id="products">
           <div class="col-lg-12">
               <div class="pagination">
@@ -154,14 +130,14 @@
         <!-- lamp -->
       <div class="container3sofa">
         <h2 class="Couch">Lamp</h2>
-        @foreach($lamp as $product)
+        @foreach($lamp as $lamp)
        
         <div class="card3">
-          <img src="products/{{$product->pro_image}}" alt="Card 1" class="card3-image">
+          <img src="products/{{$lamp->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4>{{$product->pro_name}}</h4>
-            <p>{{$product->pro_desc}}</p>
-            <a href=""><i class="fa fa-shopping-cart"></i></a>
+            <h4>{{$lamp->pro_name}}</h4>
+            <p>{{$lamp->pro_desc}}</p>
+            <a href="{{url('product_detail',$lamp->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
        
