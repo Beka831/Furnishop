@@ -1,31 +1,32 @@
 <!DOCTYPE html> 
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-       <title>product-detail</title> 
-       <link rel="stylesheet" href="{{asset('sintu/product-detail.css')}}">
-       <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;1,300;1,400&display=swap" rel="stylesheet">
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
-       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet"> 
-       
-       <script src="https://kit.fontawesome.com/0998aad7b4.js" crossorigin="anonymous"></script>
-    </head>
+        <link rel="stylesheet" href="{{asset('sintu/product-detail.css')}}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- Tailwind CSS CDN -->
+         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+
+        <!-- Fontawesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+        <link rel="stylesheet" href="{{asset('beki/Landing/stylehomee.css')}}">
+        
+          </head>
 
     <body >
 
         
-         <!-- header section strats -->
-    <header class="header_section">
-      
-    </header>
-    <!-- end header section -->
+            <!-- header section strats -->
+             @include('home.header');
+            <!-- end header section -->
 
    <!---------------single product details---------------->
 <div class=" container">
 
     <div class="box">
-    <h1>Product Detail</h1>
+    <h4>Product Detail</h4>
         @if(session()->has('message'))
     <div class="message">
             {{session()->get('message')}}
@@ -37,11 +38,7 @@
                 @csrf
             <h4>Product Name: {{$product->pro_name}}</h4>
             <h4>Single Product Price: {{$product->pro_price}} ETB</h4>
-            <?php 
-                 $total_amount = 0;
-                $total_amount = ($product->pro_price * $product->pro_quantity);
-            ?>
-            <h4>Total Price: {{$total_amount}} ETB</h4>
+            
             <h4>Quantity:<input type="number" value="{{$product->pro_quantity}}" min="1" name="quantity">
             </h4>
             <h4>Product Description: {{$product->pro_desc}}</h4>
@@ -56,6 +53,7 @@
         </a>
     </div>
 </div>
-
+    <!-- Footer -->
+    @include('home.footer')  
 </body>
 </html>

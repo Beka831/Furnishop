@@ -22,18 +22,7 @@ body {
 section{
     padding: 50px 10%;
 }
-header{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1px 100px;
-    background: #edecea;
-}
+
 .logo {
     font-size: 24px;
     font-weight: bold;

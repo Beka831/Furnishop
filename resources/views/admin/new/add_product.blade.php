@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Product</title>
-  <link rel="stylesheet" href="admin2/addproduct.css">
+  <link rel="stylesheet" href="sintu/addproduct.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>

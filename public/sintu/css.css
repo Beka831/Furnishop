@@ -6,19 +6,6 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
-
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 100px;
-    background: #edecea;
-}
 body{
   background-color: #0F2547;
 }

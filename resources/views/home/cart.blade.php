@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furnishop</title>
-    {{asset('sintu/product-detail.css')}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="beki/Cart/stylecart.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+   
+        
+        <!-- Tailwind CSS CDN -->
+         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+
+        <!-- Fontawesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+        <link rel="stylesheet" href="{{asset('beki/Landing/stylehomee.css')}}">
+
+
+        <script src="https://kit.fontawesome.com/0998aad7b4.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
-  <header>
-    <a href="#" class="logo">Furni<span>shop</span></a>
-      <div class="navbar-wrapper">
-        <ul class="navbar">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#cart" class="cart"><i class='bx bxs-cart'></i></a></li>
-        <li><a href="#account" class="account"><i class='bx bx-user'></i></a></li>
-        </ul>
-       </div>
-    </header>
+  <!-- header -->
+  @include('home.header');
     <section class="h-100 h-custom" style="background-color:#0F2547;">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -57,7 +54,10 @@
                           </div>
                         </div>
                         <hr class="my-4">
-                        <?php  $total_amount=0 ?>
+                        <?php  
+                          $total_amount=0
+                        ?>
+                        <?php $total_product= 0 ?>
                         @foreach($cart as $cart)
                         <div>
                         <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -76,7 +76,12 @@
                            
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h6 class="mb-0">ETB {{$cart->pro_price}}</h6>
+
+                          <?php 
+                            $total_product=$cart->pro_quantity * $cart->pro_price;
+                            ?>
+
+                            <h6 class="mb-0">ETB {{$total_product}} </h6>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                             <a href="{{ url('delete_cart',$cart->id)}}" class="text-muted delete-row" onclick=" return confirm('Are You Sure to Delete This Item')">
@@ -87,13 +92,13 @@
                         <hr class="my-4">
                           
                         </div>
-                        <?php $total_amount = $total_amount + $cart->pro_price ?>
+                        <?php $total_amount = $total_amount + $total_product ?>
                         @endforeach
                         
           
       
                         <div class="pt-5">
-                          <h6 class="mb-0"><a href="{{url('index')}}" class="text-body"><i
+                          <h6 class="mb-0"><a href="{{url('link')}}" class="text-body"><i
                                 class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                         </div>
                       </div>
@@ -141,5 +146,7 @@
           </div>
         </div>
       </section>
+      <!-- footer -->
+
 </body>
 </html>

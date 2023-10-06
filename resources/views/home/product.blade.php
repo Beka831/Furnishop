@@ -6,41 +6,26 @@
     <link rel="stylesheet" href="sintu/css.css">
     <script src="javas.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+     <!-- Tailwind CSS CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{{asset('beki/Landing/stylehomee.css')}}">
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <script src="https://kit.fontawesome.com/0998aad7b4.js" crossorigin="anonymous"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-    <header>
-        <a href="#" class="logo">Furni<span>shop</span></a> 
-        @if (Route::has('login'))
-  @auth
-  <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <button type="submit" class="btn btn-danger">
-                    <i class="fa-solid fa-right-from-bracket">Logout</i>
-                    </button>
-                </form>
-        @else
-        <li><a href="{{ route('login') }}">login</a></li>
-        <li><a href="{{ route('register') }}">register</a></li> 
-        
-    @endauth
-   @endif 
-        <div class="navbar-wrapper">
-          <ul class="navbar">
-            <li><a href="{{url('index')}}">Home</a></li>
-            <li><a href="{{url('link')}}" >Products </a></li>
-              
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="{{url('/show_cart')}}" class="cart"><i class='bx bxs-cart'></i></a></li>
-            <li><a href="#account" class="account"><i class='bx bx-user'></i></a></li>
-          </ul>
-        </div>
-
-      </header>
+    <!-- header -->
+    @include('home.header');
       <div class="container scrollable-container">
         <p class="category-heading">All Categories<br><br></p>
         <hr class="line0">
@@ -173,7 +158,7 @@
     </section>
     <section id="container5table">
 
-
+  <!-- table -->
       <div class="container3sofa">
         <h2 class="Couch">Table</h2>
         @foreach($table as $table)
@@ -181,8 +166,8 @@
           <img src="products/{{$table->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
             <h4>{{$table->pro_name}}</h4>
-            <p></p>
-            <a href=""><i class="fa fa-shopping-cart"></i></a>
+            <p>{{$table->pro_desc}}</p>
+            <a href="{{url('product_detail',$table->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
          @endforeach
@@ -227,8 +212,8 @@
           <img src="products/{{$bed->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
             <h4>{{$bed->pro_name}}</h4>
-            <p>Description of Card 1</p>
-            <a href=""><i class="fa fa-shopping-cart"></i></a>
+            <p>{{$bed->pro_desc}}</p>
+            <a href="{{url('product_detail',$bed->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
       
@@ -275,8 +260,8 @@
           <img src="products/{{$chair->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
             <h4>{{$chair->pro_name}}</h4>
-            <p>Description of Card 1</p>
-            <a href=""><i class="fa fa-shopping-cart"></i></a>
+            <p>{{$chair->pro_desc}}</p>
+            <a href="{{url('product_detail',$chair->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
         @endforeach
@@ -311,6 +296,6 @@
       </div>
       <hr class="line2">
     </section>
-
+      @include('home.footer')
 </body>
 </html>

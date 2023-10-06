@@ -62,6 +62,10 @@ Route::middleware([
 
  route::get('/index',[HomeController::class,'index']);
 
+ route::get('/contact',[HomeController::class,'contact']);
+
+ route::get('/about',[HomeController::class,'about']);
+
  route::get('/product_detail/{id}',[HomeController::class,'product_detail']);
 
 //add_product to cart

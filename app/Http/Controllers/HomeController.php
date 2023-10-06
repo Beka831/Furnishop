@@ -82,6 +82,7 @@ class HomeController extends Controller
             return redirect('login');
         }
     }
+
         public function show_cart()
         {
             if(Auth::id())
@@ -105,6 +106,14 @@ class HomeController extends Controller
             $cart -> delete();
 
             return redirect()->back()->with('message', 'Item Deleted Successfully.');
+        }
+        public function contact(){
+            
+            return view('home.contact');
+        }
+        public function about(){
+            
+            return view('home.about_us');
         }
     }
 

@@ -8,12 +8,10 @@
 
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/0998aad7b4.js" crossorigin="anonymous"></script>
+
     <!-- Fontawesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('beki/Landing/stylehomee.css')}}">
-    
-    
+    <link rel="stylesheet" href="stylehomee.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="js.js"></script>
@@ -25,19 +23,102 @@
 <body>
 
 <!-- Header Section -->
-    @include('home.header');
+<header class="bg-gray-900 text-white py-4 px-8">
+    <div class="flex justify-between items-center">
+      <div class="text-3xl font-semibold">Furnishop</div>
+      <nav>
+        <ul class="hidden md:flex space-x-4">
+          <li><a href="#" class="hover:text-gray-400 text-2xl">Home</a></li>
+          <li><a href="#" class="hover:text-gray-400 text-2xl">Products</a></li>
+          <li><a href="#" class="hover:text-gray-400 text-2xl">Contact</a></li>
+          <li><a href="#" class="hover:text-gray-400 text-2xl">About</a></li>
+          <li><a href="#" class="hover:text-gray-400 text-3xl"><i class='bx bxs-cart'></i></a></li>
+          <li class="relative">
+            <a href="#" class="hover:text-gray-400 text-3xl"><i class='bx bxs-user'></i></a>
+            <ul class="absolute top-full right-0 hidden bg-gray-900 text-white py-4 px-6 space-y-2">
+              <li><a href="#" class="block hover:text-gray-400 text-xl">Register</a></li>
+              <li><a href="#" class="block hover:text-gray-400 text-xl">Login</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+          <i class="bx bx-menu"></i>
+        </button>
+      </nav>
+    </div>
+    <ul id="mobile-menu" class="hidden md:hidden bg-gray-900 text-white py-4 px-6 space-y-2">
+      <li><a href="#" class="block hover:text-gray-400 text-xl">Home</a></li>
+      <li><a href="#" class="block hover:text-gray-400 text-xl">Products</a></li>
+      <li><a href="#" class="block hover:text-gray-400 text-xl">Contact</a></li>
+      <li><a href="#" class="block hover:text-gray-400 text-xl">About</a></li>
+      <li><a href="#" class="block hover:text-gray-400 text-2xl"><i class='bx bxs-cart'></i></a></li>
+      <li class="relative">
+        <a href="#" class="block hover:text-gray-400 text-2xl"><i class='bx bxs-user'></i></a>
+        <ul class="absolute top-full right-0 hidden bg-gray-900 text-white py-4 px-6 space-y-2">
+          <li><a href="#" class="block hover:text-gray-400 text-xl">Register</a></li>
+          <li><a href="#" class="block hover:text-gray-400 text-xl">Login</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
   
- <!-- header part  -->
+  <script>
+    document.getElementById("menu-toggle").addEventListener("click", function() {
+      var mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+      } else {
+        mobileMenu.classList.add("hidden");
+      }
+    });
   
+    // Show/hide dropdown on user icon click
+    document.querySelectorAll(".relative").forEach(function(item) {
+      item.addEventListener("click", function(e) {
+        e.stopPropagation();
+        var dropdown = this.querySelector("ul");
+        if (dropdown.classList.contains("hidden")) {
+          dropdown.classList.remove("hidden");
+        } else {
+          dropdown.classList.add("hidden");
+        }
+      });
+    });
+  
+    // Hide dropdown on outside click
+    window.addEventListener("click", function(e) {
+      document.querySelectorAll(".relative ul").forEach(function(dropdown) {
+        if (!dropdown.classList.contains("hidden")) {
+          dropdown.classList.add("hidden");
+        }
+      });
+    });
+  </script>
+  
+  <style>
+    /* Adjust the positioning of the dropdown */
+    .relative ul.absolute.right-0 {
+      left: auto;
+      right: 0;
+    }
+  </style>
+  
+  <style>
+    /* Adjust the positioning of the dropdown */
+    .relative ul.absolute.right-0 {
+      left: auto;
+      right: 0;
+    }
+  </style>
 
 <!-- 1st -->
 <section class="h-screen flex items-center justify-center bg-cover bg-center"
-         style="background-image: url('beki/Landing/1st.jpg')">
+         style="background-image: url('1st.jpg')">
     <div class="text-white text-center">
         <h1 class="text-7xl font-extrabold mb-8">Creative Furniture for your House</h1>
         <p class="text-2xl  mb-8">Welcome to Furnishop, where quality meets comfort! We are your trusted destination for all your<br> furniture needs. With years of experience in the industry, we pride ourselves on offering a wide selection of stylish and durable<br> furniture pieces to enhance your home or office space.</p>
         
-        <a href="{{ url('link')}}" class="px-8 py-4 bg-gray-500 hover:bg-gray-600 rounded-full text-white uppercase tracking-wide">Shop Now</a>
+        <a href="#" class="px-8 py-4 bg-gray-500 hover:bg-gray-600 rounded-full text-white uppercase tracking-wide">Shop Now</a>
     </div>
 </section>
 
@@ -98,32 +179,32 @@
       }">
             <a href="your-link-here" class="card-link">
             <div class="p-2" style="background: #E6E6E6; border-radius: 63px; opacity: 1; height: 220px; width: 250px; display: flex; justify-content: center; align-items: center;">
-                <img src="beki/Landing/sofa.png" alt="Image 1" class="w-full mb-4 rounded-lg">
+                <img src="sofa.png" alt="Image 1" class="w-full mb-4 rounded-lg">
             </div>
         </a>
         <a href="your-link-here" class="card-link">
             <div class="p-2" style="background: #E6E6E6; border-radius: 63px; opacity: 1; height: 220px; width: 250px; display: flex; justify-content: center; align-items: center;">
-                <img src="beki/Landing/tvstand.png" alt="Image 2" class="w-full mb-4 rounded-lg">
+                <img src="tvstand.png" alt="Image 2" class="w-full mb-4 rounded-lg">
             </div>
         </a>
         <a href="your-link-here" class="card-link">
             <div class="p-2" style="background: #E6E6E6; border-radius: 63px; opacity: 1; height: 220px; width: 250px; display: flex; justify-content: center; align-items: center;">
-                <img src="beki/Landing/chair.png" alt="Image 3" class="mb-4 rounded-lg" style="max-width: 80%; max-height: 80%;">
+                <img src="chair.png" alt="Image 3" class="mb-4 rounded-lg" style="max-width: 80%; max-height: 80%;">
             </div>
         </a>
         <a href="your-link-here" class="card-link">
             <div class="p-2" style="background: #E6E6E6; border-radius: 63px; opacity: 1; height: 220px; width: 250px; display: flex; justify-content: center; align-items: center;">
-                <img src="beki/Landing/lamp.png" alt="Image 4" class="mb-4 rounded-lg" width="150px" height="120px" style="margin: auto;">
+                <img src="lamp.png" alt="Image 4" class="mb-4 rounded-lg" width="150px" height="120px" style="margin: auto;">
             </div>
         </a>
         <a href="your-link-here" class="card-link">
             <div class="p-2" style="background: #E6E6E6; border-radius: 63px; opacity: 1; height: 220px; width: 250px; display: flex; justify-content: center; align-items: center;">
-                <img src="beki/Landing/bed.png" alt="Image 5" class="w-full mb-4 rounded-lg" style="margin: auto;">
+                <img src="bed.png" alt="Image 5" class="w-full mb-4 rounded-lg" style="margin: auto;">
             </div>
         </a>
         <a href="your-link-here" class="card-link">
             <div class="p-2" style="background: #E6E6E6; border-radius: 63px; opacity: 1; height: 220px; width: 250px; display: flex; justify-content: center; align-items: center;">
-                <img src="beki/Landing/tch.png" alt="Image 6" class="mb-4 rounded-lg" style="max-width: 90%; max-height: 90%;">
+                <img src="tch.png" alt="Image 6" class="mb-4 rounded-lg" style="max-width: 90%; max-height: 90%;">
             </div>
         </a>
         </div>
@@ -134,10 +215,10 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="relative ml-30">
-                <div class="absolute top-[-10] left-[-20] bg-cover bg-center rounded-lg" style="background-image: url('beki/Landing/sofaimage.jpg'); height: 600px; border-radius: 70px; width: 600px; top: -50px;"></div>
+            <div class="relative ml-40">
+                <div class="absolute top-[-10] left-[-20] bg-cover bg-center rounded-lg" style="background-image: url('sofaimage.jpg'); height: 600px; border-radius: 70px; width: 800px; top: -50px;"></div>
               </div>
-            <div class="flex items-center ml-38 mt-38">
+            <div class="flex items-center ml-48 mt-35">
                 <ul class="list-none pl-8">
                     <li class="text-black text-5xl font-bold mr-4 mb-4">We will make your house better</li>
                     <li class="text-black mb-4 text-4xl">
@@ -297,7 +378,7 @@
     <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="flex flex-col items-center">
-                <img src="beki/Landing/FurniShop.png" alt="Furnishop Logo" class="w-22 h-25 mb-4">
+                <img src="FurniShop.png" alt="Furnishop Logo" class="w-22 h-25 mb-4">
                 
                 <ul class="flex space-x-6 mt-2">
                     <li><a href="#" class="text-white hover:text-blue-700 text-2xl"><i class="fab fa-instagram"></i></a></li>
