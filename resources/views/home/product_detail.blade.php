@@ -36,7 +36,12 @@
          <form action="{{url('add_cart',$product->id)}}" method="POST">
                 @csrf
             <h4>Product Name: {{$product->pro_name}}</h4>
-            <h4>Product Price: {{$product->pro_price}}ETB</h4>
+            <h4>Single Product Price: {{$product->pro_price}} ETB</h4>
+            <?php 
+                 $total_amount = 0;
+                $total_amount = ($product->pro_price * $product->pro_quantity);
+            ?>
+            <h4>Total Price: {{$total_amount}} ETB</h4>
             <h4>Quantity:<input type="number" value="{{$product->pro_quantity}}" min="1" name="quantity">
             </h4>
             <h4>Product Description: {{$product->pro_desc}}</h4>
