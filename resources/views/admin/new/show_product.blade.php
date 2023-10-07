@@ -90,7 +90,8 @@
                           <th >Price</th>
                           <th >Product Image</th>
                           <th >Entry Date</th>
-                          <th >Action</th>
+                          <th >Edit</th>
+                          <th >Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -105,8 +106,8 @@
                             <img src="/products/{{$product->pro_image}}" alt="produc image" class="pro-image">
                         </td>
                         <td>{{$product->created_at}}</td>
-                        <td><a class="edit" href="{{url ('/edit_product',$product->id)}}">Edit</a>
-                        <a class="delete" href="{{url('/delete_product',$product->id)}}" 
+                        <td><a class="edit" href="{{url ('/edit_product',$product->id)}}">Edit</a></td> 
+                        <td> <a class="delete" href="{{url('/delete_product',$product->id)}}" 
                         onclick=" return confirm('Are You Sure to Delete This Product')">Delete</a>
                         </td>
                         

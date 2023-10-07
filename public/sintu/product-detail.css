@@ -28,9 +28,10 @@ a{
     
 }
 img{
-    padding: 10px 30px;
-    width: 350px;
-    height: 350px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 500px ;
+    padding: 100px 30px;
     float: left;
 }
 h1{
