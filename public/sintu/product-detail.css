@@ -12,10 +12,11 @@ body{
     background-color: #0F2547;
 }
 .container{
-    background: #fff;
+    background: #ffffff;
     margin: 65px 110px;
     width: 85%;
     height:75% ;
+    border-radius: 30px;
 }
 a{
     text-decoration: none;
@@ -24,12 +25,12 @@ a{
 .box{
     padding: 100px 50px ;
     margin: 50px;
+    
 }
 img{
-    max-width: 400px;
     padding: 10px 30px;
-    width: 340px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     float: left;
 }
 h1{

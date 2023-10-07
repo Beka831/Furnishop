@@ -30,7 +30,7 @@
           @foreach($catagory as $catagory)
             <li>
               <a href="#container3sofa">
-                <span>{{$catagory->catagories_title}}</span>
+                <span><i class="fa-brands fa-product-hunt"></i>{{$catagory->catagories_title}}</span>
               </a>
             </li>
            @endforeach
@@ -45,8 +45,8 @@
         
             <img src="products/{{$latest->pro_image}}" alt="Card 1" class="card3-image">
             <div class="card3-description">
-              <h4 class="text-center">{{$latest->pro_name}}</h4>
-              <h4 class="text-center">ETB {{$latest->pro_price}}</h4>
+              <h4 ><strong>{{$latest->pro_name}}</strong></h4>
+              <h4 ><strong>ETB {{$latest->pro_price}}</strong></h4>
               <a href="{{url('product_detail',$latest->id)}}"><i class="fa fa-shopping-cart"></i></a>
             </div>
         </div>
@@ -69,8 +69,8 @@
     
           <img src="products/{{$sofa->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4 class="text-center">{{$sofa->pro_name}}</h4>
-            <h4 class="text-center">ETB {{$sofa->pro_price}}</h4>
+            <h4 ><strong>{{$sofa->pro_name}}</strong></h4>
+            <h4 ><strong>ETB {{$sofa->pro_price}}</strong> </h4>
            
             <a href="{{url('product_detail',$sofa->id)}}"><i class="text-center fa fa-shopping-cart "></i></a>
           
@@ -121,8 +121,8 @@
         <div class="card3">
           <img src="products/{{$lamp->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4 class="text-center">{{$lamp->pro_name}}</h4>
-            <h4 class="text-center">ETB {{$lamp->pro_price}}</h4>
+            <h4><strong>{{$lamp->pro_name}}</strong></h4>
+            <h4><strong>ETB {{$lamp->pro_price}}</strong></h4>
             <a href="{{url('product_detail',$lamp->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
@@ -166,8 +166,8 @@
         <div class="card3">
           <img src="products/{{$table->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4 class="text-center">{{$table->pro_name}}</h4>
-            <h4 class="text-center">ETB {{$table->pro_price}}</h4>
+            <h4 ><strong>{{$table->pro_name}}</strong></h4>
+            <h4 ><strong>ETB {{$table->pro_price}}</strong></h4>
             <a href="{{url('product_detail',$table->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
@@ -212,8 +212,8 @@
         <div class="card3">
           <img src="products/{{$bed->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4 class="text-center">{{$bed->pro_name}}</h4>
-            <h4 class="text-center">ETB {{$bed->pro_priice}}</h4>
+            <h4><strong>{{$bed->pro_name}}</strong></h4>
+            <h4><strong>ETB {{$bed->pro_priice}}</strong></h4>
             <a href="{{url('product_detail',$bed->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
@@ -260,8 +260,8 @@
          <div class="card3">
           <img src="products/{{$chair->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4 class="text-center">{{$chair->pro_name}}</h4>
-            <h4 class="text-center">ETB {{$chair->pro_desc}}</p>
+            <h4><strong>{{$chair->pro_name}}</strong></h4>
+            <h4><strong>ETB {{$chair->pro_desc}}</strong></p>
             <a href="{{url('product_detail',$chair->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>

@@ -7,8 +7,8 @@
                 
                 <ul class="flex space-x-6 mt-2">
                     <li><a href="#" class="hover:text-blue-700 text-2xl"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#" class=" hover:text-blue-700 text-2xl"><i class="fab fa-linkedin"></i></a></li>
-                    <li><a href="#" class=" hover:text-blue-700 text-2xl"><i class="fab fa-pinterest"></i></a></li>
+                    <li><a href="#" class="hover:text-blue-700 text-2xl"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#" class="hover:text-blue-700 text-2xl"><i class="fab fa-pinterest"></i></a></li>
                     <!-- Add additional social media links here if needed -->
                 </ul>
             </div>
