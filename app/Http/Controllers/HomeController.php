@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\catagories;
 use App\Models\products;
 use App\Models\cart;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -43,6 +44,13 @@ class HomeController extends Controller
          
         return view('home.product',compact('product','sofa','lamp','latest',
                     'table','bed','chair','catagory'));
+    }
+
+    public function latest()
+    {
+        $product = products::all();
+        $latest = products::all()->take(-5);
+        return view('home.userpage',compact('latest'));
     }
 
     public function product_detail($id){
@@ -114,6 +122,44 @@ class HomeController extends Controller
         public function about(){
             
             return view('home.about_us');
+        }
+
+        public function cash_order(){
+
+            $user = Auth::user();
+
+            $userid=$user->id;
+
+            $data=cart::where('user_id','=',$userid)->get();
+
+
+            foreach($data as $data)
+            {
+                $order = new order;
+                $order->name=$data->name;
+                $order->email=$data->email;
+                $order->phone=$data->phone;
+                $order->address=$data->address;
+                $order->user_id=$data->user_id ;
+                $order->pro_name=$data->pro_name;
+                $order->pro_price=$data->pro_price;
+                $order->pro_quantity=$data->pro_quantity;
+                $order->pro_image=$data->pro_image;
+                $order->pro_id=$data->pro_id;
+
+                $order->payment_status='cash on delivery';
+
+                $order->delivery_status='processing';
+
+                $order->save();
+
+                $cartid=$data->id;
+                $cart=cart::find($cartid);
+                $cart->delete();
+
+            }
+            return redirect()->back()->with('mess','We have received your order.
+                                            We will connect with you soon.');
         }
     }
 

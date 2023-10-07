@@ -6,16 +6,18 @@
   <meta charset="UTF-8">
   <title>Register</title>
   <link rel="stylesheet" href="sintu/login/login.css">
-
+  
 </head>
 <body>
+
 <div class="wrapper">
   <div class="title-text">
     <div class="title login">Register</div>
   </div>
   <div class="form-container">
+  <x-validation-errors class="gaz" />
     <div class="form-inner">
-    <x-validation-errors class="gaz" />
+    
     <form method="POST" action="{{ route('register') }}"class="signup">
         @csrf
         <div class="field">
@@ -50,6 +52,7 @@
 <style>
     .gaz{
         color: red;
+        text-align: center;
     }
 </style>
 </body>

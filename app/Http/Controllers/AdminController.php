@@ -8,6 +8,8 @@ use App\Models\catagories;
 
 use App\Models\products;
 
+use App\Models\Order;
+
 class AdminController extends Controller
 {
     public function view_catagory(){
@@ -141,4 +143,20 @@ class AdminController extends Controller
         return redirect()->back()->with('message','Update Product Successfully');
 
    }
+    public function order()
+    {
+        $order=Order::all();
+
+        return view('admin.new.order',compact('order'));
+    }
+    public function delivered($id)
+    {
+        $order=Order::find($id);
+
+        $order->delivery_status="delivered";
+
+        $order->save();
+
+        return redirect()->back();
+    }
 }

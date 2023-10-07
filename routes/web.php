@@ -56,9 +56,15 @@ Route::middleware([
 
  route::post('/update_catagory/{id}',[AdminController::class,'update_catagory']);
 
+ route::get('/order',[AdminController::class,'order']);
+
+ route::get('/delivered/{id}',[AdminController::class,'delivered']);
+
  //user side
 
  route::get('/link',[HomeController::class,'link']);
+
+ route::get('/latest',[HomeController::class,'latest']);
 
  route::get('/index',[HomeController::class,'index']);
 
@@ -76,3 +82,6 @@ route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
 route::get('/show_cart',[HomeController::class,'show_cart']);
 
 route::get('/delete_cart/{id}',[HomeController::class,'delete_cart']);
+
+//order
+route::get('/cash_order',[HomeController::class,'cash_order']);

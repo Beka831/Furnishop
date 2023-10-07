@@ -14,9 +14,6 @@
     <!-- Fontawesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-    <link rel="stylesheet" href="{{asset('beki/Landing/stylehomee.css')}}">
-
-
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -45,8 +42,12 @@
       <div class="latest-product">Latest Products</div>
       @foreach($latest as $latest)
         <div class="card">
+        
             <img src="products/{{$latest->pro_image}}" alt="Card 1" class="card3-image">
             <div class="card3-description">
+              <h4 class="text-center">{{$latest->pro_name}}</h4>
+              <h4 class="text-center">ETB {{$latest->pro_price}}</h4>
+              <a href="{{url('product_detail',$latest->id)}}"><i class="fa fa-shopping-cart"></i></a>
             </div>
         </div>
         @endforeach
@@ -65,16 +66,16 @@
         @foreach($sofa as $sofa)
        
         <div class="card3">
-          
+    
           <img src="products/{{$sofa->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4>{{$sofa->pro_name}}</h4>
-            <p>{{$sofa->pro_desc}}</p>
+            <h4 class="text-center">{{$sofa->pro_name}}</h4>
+            <h4 class="text-center">ETB {{$sofa->pro_price}}</h4>
            
-            <a href="{{url('product_detail',$sofa->id)}}"><i class="fa fa-shopping-cart"></i></a>
+            <a href="{{url('product_detail',$sofa->id)}}"><i class="text-center fa fa-shopping-cart "></i></a>
           
           </div>
-          
+
         </div>
         
   
@@ -120,8 +121,8 @@
         <div class="card3">
           <img src="products/{{$lamp->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4>{{$lamp->pro_name}}</h4>
-            <p>{{$lamp->pro_desc}}</p>
+            <h4 class="text-center">{{$lamp->pro_name}}</h4>
+            <h4 class="text-center">ETB {{$lamp->pro_price}}</h4>
             <a href="{{url('product_detail',$lamp->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
@@ -165,8 +166,8 @@
         <div class="card3">
           <img src="products/{{$table->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4>{{$table->pro_name}}</h4>
-            <p>{{$table->pro_desc}}</p>
+            <h4 class="text-center">{{$table->pro_name}}</h4>
+            <h4 class="text-center">ETB {{$table->pro_price}}</h4>
             <a href="{{url('product_detail',$table->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
@@ -211,8 +212,8 @@
         <div class="card3">
           <img src="products/{{$bed->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4>{{$bed->pro_name}}</h4>
-            <p>{{$bed->pro_desc}}</p>
+            <h4 class="text-center">{{$bed->pro_name}}</h4>
+            <h4 class="text-center">ETB {{$bed->pro_priice}}</h4>
             <a href="{{url('product_detail',$bed->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
@@ -259,8 +260,8 @@
          <div class="card3">
           <img src="products/{{$chair->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
-            <h4>{{$chair->pro_name}}</h4>
-            <p>{{$chair->pro_desc}}</p>
+            <h4 class="text-center">{{$chair->pro_name}}</h4>
+            <h4 class="text-center">ETB {{$chair->pro_desc}}</p>
             <a href="{{url('product_detail',$chair->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>

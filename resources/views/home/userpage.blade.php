@@ -88,6 +88,7 @@
               margin-right: auto;
             }
           }">Latest Products</h2>
+         
        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 ml-auto mr-auto md:ml-40" style="width: 80%; @media (max-width: 768px) {
         .ml-auto {
           margin-left: auto;
@@ -127,6 +128,7 @@
             </div>
         </a>
         </div>
+
     </div>
 </section>
 

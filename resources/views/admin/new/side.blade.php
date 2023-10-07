@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order.html">
+                    <a href="{{ url('order')}}">
                         <span class="icon"><i class="ri-booklet-line"></i></span>
                         <div class="sidebar--item">Orders</div>
                     </a>

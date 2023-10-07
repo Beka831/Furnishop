@@ -237,12 +237,17 @@ body{
   position: relative;
   width: calc(20% - 20px);
   background-color: #e8e8e8;
-  height: 190px;
+  height: 250px;
   border-radius: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-right: 10px; /* Adjust the margin as needed */
   margin-top: 150px;
 }
+.card a{
+  color: #000;
+  text-decoration: none;
+}
+
 .card:hover{
   background-color: #333;
 }
@@ -366,6 +371,7 @@ body{
   margin-right: 10px;
   margin-top: 40px;
   display: inline-block;
+
 }
 
 .card3-image {

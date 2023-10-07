@@ -22,6 +22,7 @@
     <div class="title login">Login</div>
   </div>
   <div class="form-container">
+  <x-validation-errors class="gaza" />
     <div class="form-inner">
       <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -48,3 +49,9 @@
 </div>
 </body>
 </html>
+<style>
+  .gaza{
+    color: red;
+    text-align: center;
+  }
+</style>

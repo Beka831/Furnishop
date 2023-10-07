@@ -39,6 +39,11 @@
                                 {{session()->get('message')}}
                             </div>
                         @endif
+                        @if(session()->has('mess'))
+                            <div class="text-center text-success">
+                                {{session()->get('mess')}}
+                            </div>
+                        @endif
                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                           <div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: 10px;">Image</h6>
@@ -50,7 +55,8 @@
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -30px;">Quantity</h6>
                           </div>
                           <div class="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -50px;">Price</h6>
+                            <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -50px;">Total Price
+                            (quantity*price)</h6>
                           </div>
                         </div>
                         <hr class="my-4">
@@ -118,10 +124,8 @@
       
                         <div class="mb-4 pb-2">
                           <select class="select">
-                            <option value="1">Standard-Delivery- ETB 200.00</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
+                            <option value="1">Standard-Delivery</option>
+                            <option value="2">Vip-Delivery</option>
                           </select>
                         </div>
       
@@ -133,9 +137,9 @@
                           <h5 class="text-uppercase">Total price</h5>
                           <h5>ETB {{$total_amount}}</h5>
                         </div>
-      
-                        <button type="button" class="btn btn-dark btn-block btn-lg"
-                          data-mdb-ripple-color="dark">CHECKOUT -></button>
+                        <a href="{{url('cash_order')}}"> <button type="button" class="btn btn-dark btn-block btn-lg"
+                          data-mdb-ripple-color="dark">Cash Order</button></a>
+                       
       
                       </div>
                     </div>
