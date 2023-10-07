@@ -7,6 +7,7 @@
           <li><a href="{{url('link')}}" class="hover:text-gray-400 text-2xl">Products</a></li>
           <li><a href="{{url('contact')}}" class="hover:text-gray-400 text-2xl">Contact</a></li>
           <li><a href="{{url('about')}}" class="hover:text-gray-400 text-2xl">About</a></li>
+          <li><a href="{{url('/show_order')}}" class="hover:text-gray-400 text-2xl">Orders</a></li>
           <li><a href="{{url('/show_cart')}}" class="hover:text-gray-400 text-3xl"><i class='bx bxs-cart'></i></a></li>
           <li class="relative">
             <a href="#" class="hover:text-gray-400 text-3xl"><i class='bx bxs-user'></i></a>

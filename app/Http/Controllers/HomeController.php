@@ -131,7 +131,10 @@ class HomeController extends Controller
             $userid=$user->id;
 
             $data=cart::where('user_id','=',$userid)->get();
-
+            
+            if ($data->isEmpty()) {
+                return redirect()->back()->with('message', 'Cart is empty. Please add product to cart first.');
+            }
 
             foreach($data as $data)
             {
@@ -158,8 +161,31 @@ class HomeController extends Controller
                 $cart->delete();
 
             }
-            return redirect()->back()->with('mess','We have received your order.
-                                            We will connect with you soon.');
+            //return the order data to order.blade.php and redirect to it
+            $order = order::where('user_id','=',$userid)->get();
+            return view('home.order',compact('order'));
+        }
+        public function delete_order($id){
+
+            $order = Order::find($id);
+
+            $order -> delete();
+
+            return redirect()->back()->with('message', 'Order Cancelled Successfully.');
+        }
+        public function show_order(){
+
+           if(Auth::id())
+           {
+
+            $id = Auth::user()->id;
+            $order = Order::where('user_id','=',$id)->get();
+            return view('home.order',compact('order'));
+           }
+              else{
+                return redirect('login');
+              }
+
         }
     }
 
