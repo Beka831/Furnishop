@@ -45,16 +45,16 @@
                             </div>
                         @endif
                         <div class="row mb-4 d-flex justify-content-between align-items-center">
-                          <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-1">
+                          <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-2">
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: 10px;">Image</h6>
                           </div>
                           <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-1">
-                            <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -80px;">Product Name</h6>
+                            <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -80px;">Product <br>Name</br></h6>
                           </div>
                           <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-1">
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -30px;">Quantity</h6>
                           </div>
-                          <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-2">
+                          <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-1">
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -30px;">Payment Status</h6>
                           </div>
                           <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-2">
@@ -64,7 +64,7 @@
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -50px;">Total Price
                             (quantity*price)</h6>
                           </div>
-                          <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-1">
+                          <div class=" col-sm-4 col-md-1 col-lg-3 col-xl-2">
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -30px;"></h6>
                           </div>
                           

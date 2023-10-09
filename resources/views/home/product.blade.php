@@ -213,7 +213,7 @@
           <img src="products/{{$bed->pro_image}}" alt="Card 1" class="card3-image">
           <div class="card3-description">
             <h4><strong>{{$bed->pro_name}}</strong></h4>
-            <h4><strong>ETB {{$bed->pro_priice}}</strong></h4>
+            <h4><strong>ETB {{$bed->pro_price}}</strong></h4>
             <a href="{{url('product_detail',$bed->id)}}"><i class="fa fa-shopping-cart"></i></a>
           </div>
         </div>
