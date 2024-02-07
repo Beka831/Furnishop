@@ -85,5 +85,17 @@ route::get('/delete_cart/{id}',[HomeController::class,'delete_cart']);
 
 //order
 route::get('/cash_order',[HomeController::class,'cash_order']);
-route::get('/delete_order/{id}',[HomeController::class,'delete_order']);
+
+//teamir work's
 route::get('/show_order',[HomeController::class,'show_order']);
+
+route::get('/delete_order/{id}',[HomeController::class,'delete_order']);
+
+// chapaid
+
+// The route that the button calls to initialize payment
+
+Route::post('pay', 'App\Http\Controllers\ChapaController@initialize')->name('pay');
+
+// The callback u+rl after a payment
+Route::get('callback/{reference}', 'App\Http\Controllers\ChapaController@callback')->name('callback');

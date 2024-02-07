@@ -133,7 +133,7 @@ class HomeController extends Controller
             $data=cart::where('user_id','=',$userid)->get();
             
             if ($data->isEmpty()) {
-                return redirect()->back()->with('message', 'Cart is empty. Please add product to cart first.');
+                return redirect()->back()->with('message', 'Cart is empty. Please add product to cart first!');
             }
 
             foreach($data as $data)
@@ -165,27 +165,32 @@ class HomeController extends Controller
             $order = order::where('user_id','=',$userid)->get();
             return view('home.order',compact('order'));
         }
-        public function delete_order($id){
-
-            $order = Order::find($id);
-
-            $order -> delete();
-
-            return redirect()->back()->with('message', 'Order Cancelled Successfully.');
-        }
         public function show_order(){
 
            if(Auth::id())
            {
 
-            $id = Auth::user()->id;
-            $order = Order::where('user_id','=',$id)->get();
+            $data = Auth::user()->id;
+            $order = Order::where('user_id','=',$data)->get();
             return view('home.order',compact('order'));
            }
-              else{
+           
+           else{
                 return redirect('login');
               }
 
         }
+        public function delete_order($id){
+
+            $order = Order::find($id);
+
+            $order->delivery_status = "Cancelled Order";
+
+            $order->save();
+
+            return redirect()->back()->with('message', 'Order Cancelled Successfully.');
+        }
+        
     }
 
+    

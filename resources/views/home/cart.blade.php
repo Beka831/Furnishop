@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="beki/Cart/stylecart.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
-   
-        
         <!-- Tailwind CSS CDN -->
          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
 
@@ -58,7 +56,7 @@
                             <h6 class="text-muted" style="margin-bottom: -20px; margin-left: -50px;">Total Price
                             (quantity*price)</h6>
                           </div>
-                        </div>
+                        </div>    
                         <hr class="my-4">
                         <?php  
                           $total_amount=0
@@ -75,11 +73,7 @@
                             <h6 class="text-black mb-0">{{$cart->pro_name}}</h6>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            
-
-                            <h6 class="text-black mb-0">{{$cart->pro_quantity}}</h6>
-
-                           
+                            <h6 class="text-black mb-0">{{$cart->pro_quantity}}</h6>    
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
 
@@ -100,9 +94,6 @@
                         </div>
                         <?php $total_amount = $total_amount + $total_product ?>
                         @endforeach
-                        
-          
-      
                         <div class="pt-5">
                           <h6 class="mb-0"><a href="{{url('link')}}" class="text-body"><i
                                 class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
@@ -128,19 +119,18 @@
                             <option value="2">Vip-Delivery</option>
                           </select>
                         </div>
-      
-                       
-      
                         <hr class="my-4">
-      
                         <div class="d-flex justify-content-between mb-5">
                           <h5 class="text-uppercase">Total price</h5>
                           <h5>ETB {{$total_amount}}</h5>
                         </div>
+                        <form method="POST" action="{{route('pay')}}" id="paymentForm">
+                            @csrf
+                              <input type="hidden" value="{{$total_amount}}" name="chapa" >
+                              <input type="submit" class="btn btn-dark btn-block btn-lg" value="pay with chapa" />
+                          </form><br></br>
                         <a href="{{url('cash_order')}}" > <button type="button" class="btn btn-dark btn-block btn-lg"
                           data-mdb-ripple-color="dark">Cash Order</button></a>
-                       
-      
                       </div>
                     </div>
                   </div>
